@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { borderBox, flexBox } from '../../styles/Mixin';
+import { flexBox } from '../../styles/Mixin';
 
 export interface Prop {
   isFlex?: boolean;

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import backImg from '../../img/back.png';
 interface Prop {
   theme: {
     [propName: string]: any;

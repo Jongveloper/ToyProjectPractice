@@ -18,7 +18,7 @@ const AddTodo = () => {
         ${flexBox('flex-start', 'flex-start')}
         `;
         }}
-        margin='200px auto'
+        margin='200px auto 40px auto'
       >
         <Input placeholder='오늘의 할 일을 입력하세요' />
         <Button
