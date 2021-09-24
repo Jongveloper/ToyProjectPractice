@@ -4,16 +4,18 @@ import { Grid } from '../../elements'
 
 const Header = () => {
   return (
-    <HeaderStyle>
-      <Grid
-        height='100%'
-        isFlex
-        hoz='center'
-        ver='center'>
-        <p style={{ fontSize: '60px', margin: '80px 0' }}>ToDoList</p>
+    <>
+      <HeaderStyle>
+        <Grid
+          height='100%'
+          isFlex
+          hoz='center'
+          ver='center'>
+          <p style={{ fontSize: '60px', margin: '80px 0' }}>ToDoList</p>
 
-      </Grid>
-    </HeaderStyle>
+        </Grid>
+      </HeaderStyle>
+    </>
   )
 }
 
