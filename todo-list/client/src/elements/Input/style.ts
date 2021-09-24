@@ -22,23 +22,11 @@ const InputStyle = styled.input<Prop>`
   border-radius: ${({ radius }) => radius};
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  background-color: ${({ bgColor, theme }) => theme.color[(bgColor = 'white')]};
-  color: ${({ color, theme }) => theme.color[(color = 'black')]};
   font-size: ${({ fs, theme }) => fs && theme.fontSize[fs]};
   ${({ padding }) => borderBox((padding = '0'))};
 
   &:focus {
     outline: none;
-  }
-
-  &::placeholder {
-    color: ${({ theme }) => theme.color.gray};
-  }
-  &::-webkit-input-placeholder {
-    color: ${({ theme }) => theme.color.gray};
-  }
-  &::-ms-input-placeholder {
-    color: ${({ theme }) => theme.color.gray};
   }
 
   ${({ addstyle }) => addstyle};

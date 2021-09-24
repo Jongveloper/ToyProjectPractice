@@ -27,25 +27,6 @@ const makeItFlexBox = css<Prop>`
     flexBox((hoz = 'center'), (ver = 'center'), 'inline-flex')}
 `;
 
-const buttonShapeSetting = (form: string) => {
-  switch (form) {
-    case 'text':
-      return css<Prop>`
-        background: none;
-        padding: 0;
-        color: ${({ color, theme }) => color && theme.color[color]};
-      `;
-    default:
-      return css<Prop>`
-        background-color: ${({ bgColor, theme }) =>
-          theme.color[(bgColor = 'gray')]};
-        color: ${({ color, theme }) =>
-          color ? theme.color[color] : theme.color.black};
-        ${({ padding }) => borderBox((padding = '0'))}
-      `;
-  }
-};
-
 const ButtonStyle = styled.button<Prop>`
   ${({ isFlex }) => isFlex && makeItFlexBox};
   width: ${({ width }) => width};
@@ -55,7 +36,6 @@ const ButtonStyle = styled.button<Prop>`
   cursor: pointer;
   border: ${({ border }) => border};
   font-size: ${({ fs, theme }) => fs && theme.fontSize[fs]};
-  font-weight: ${({ fw, theme }) => fw && theme.fontWeight[fw]};
 
   ${({ addstyle }) => addstyle};
 `;
