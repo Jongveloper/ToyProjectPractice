@@ -11,8 +11,7 @@ const Header = () => {
           isFlex
           hoz='center'
           ver='center'>
-          <p style={{ fontSize: '60px', margin: '80px 0' }}>ToDoList</p>
-
+          <p style={{ fontSize: '60px', margin: '80px 0', color: 'gray' }}>ToDoList</p>
         </Grid>
       </HeaderStyle>
     </>
