@@ -3,18 +3,22 @@ import TodoStyle from './style';
 import { Grid, Button } from '../../elements';
 import { css } from 'styled-components';
 import { flexBox } from '../../styles/Mixin';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { removeTodo, todoInterface } from '../../redux/todo/todoSlice';
+import { useAppSelector } from '../../redux/hooks';
+import { getTodoDB, deleteTodoDB } from '../../redux/todo/todoSlice';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 const TodoList = () => {
-  const dispatch = useAppDispatch()
-  const todoState = useAppSelector((state) => state.todo)
-
-  const handleDelete = (i: number) => {
-    dispatch(removeTodo(i))
+  const seDispatch = useDispatch();
+  const todoState = useAppSelector((state) => state.todo.list)
+  const handleDelete = (id: any) => {
+    seDispatch(deleteTodoDB(id))
   }
+  useEffect(() => {
+    seDispatch(getTodoDB())
+  }, [])
 
-  const render = todoState.map((i: todoInterface, idx: number) => {
+  const render = todoState.map((i: any, idx: number) => {
     return (
       <TodoStyle key={i.id}>
         <Grid
