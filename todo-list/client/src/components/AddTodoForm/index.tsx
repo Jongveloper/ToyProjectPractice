@@ -2,24 +2,18 @@ import React from 'react';
 import { Button, Grid, Input } from '../../elements';
 import { css } from 'styled-components'
 import { flexBox } from '../../styles/Mixin';
-import { todoInterface, addTodo } from '../../redux/todo/todoSlice';
-import { useAppDispatch } from '../../redux/hooks';
+import { todoInterface, addTodoDB } from '../../redux/todo/todoSlice';
+import { useDispatch } from 'react-redux';
 
 const AddTodo = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const [todo, setTodo] = React.useState<string>('');
   const $todo = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(event.target.value)
   }
 
   const handleAddTodo = () => {
-    if (todo.trim().length === 0) return
-    const data: todoInterface = {
-      id: Math.floor(Math.random() * 10000),
-      contents: todo,
-    }
-    dispatch(addTodo(data))
-    setTodo('')
+    dispatch(addTodoDB(todo))
   }
 
 
