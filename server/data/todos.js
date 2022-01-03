@@ -1,7 +1,6 @@
 import SQ from 'sequelize';
 import { sequelize } from '../db/database.js';
 
-const Sequelize = SQ.Sequelize;
 const DataTypes = SQ.Sequelize;
 
 const Todo = sequelize.define('todo', {
@@ -29,8 +28,11 @@ export async function getAll() {
   return Todo.findAll({ ...ORDER_DESC, raw: true });
 }
 
-export async function create(text) {
-  return Todo.create({ text }).then((data) => this.getById(data.dataValues.id));
+export async function create(todo) {
+  return Todo.create({ todo }).then(
+    (data) => this.getById(data.dataValues.id)
+    // console.log(data)
+  );
 }
 
 export async function remove(id) {
