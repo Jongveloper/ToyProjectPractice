@@ -7,7 +7,7 @@ const TodoAddForm = memo((props) => {
   const onSubmit = (event) => {
     event.preventDefault();
     const name = inputRef.current.value;
-    name && props.onAdd(name);
+    name.trim() && props.onAdd(name);
     formRef.current.reset();
   };
 
