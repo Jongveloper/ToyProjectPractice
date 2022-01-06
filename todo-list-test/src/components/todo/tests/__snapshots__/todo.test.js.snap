@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo component renders 1`] = `
+<li>
+  <span />
+  <button
+    onClick={[Function]}
+    title="삭제"
+  >
+    <i
+      className="fas fa-trash"
+    />
+  </button>
+</li>
+`;
