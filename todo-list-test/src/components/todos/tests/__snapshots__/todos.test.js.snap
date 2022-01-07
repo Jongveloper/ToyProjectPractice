@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todos component renders 1`] = `
+<div>
+  <form
+    className="add-from"
+    onSubmit={[Function]}
+  >
+    <input
+      className="add-input"
+      placeholder="해야할 일을 입력하세요"
+      type="text"
+    />
+    <button
+      className="add-button"
+    >
+      Add
+    </button>
+  </form>
+  <ul>
+    <li>
+      <span />
+      <button
+        onClick={[Function]}
+        title="삭제"
+      >
+        <i
+          className="fas fa-trash"
+        />
+      </button>
+    </li>
+    <li>
+      <span />
+      <button
+        onClick={[Function]}
+        title="삭제"
+      >
+        <i
+          className="fas fa-trash"
+        />
+      </button>
+    </li>
+  </ul>
+</div>
+`;

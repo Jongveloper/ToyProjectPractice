@@ -38,7 +38,7 @@ describe('Todos component', () => {
 
   it('todo를 삭제합니다.', () => {
     setup();
-    const button = screen.getByTitle('delete')[0];
+    const button = screen.getAllByTitle('삭제')[0];
     userEvent.click(button);
     expect(onDelete).toHaveBeenCalledWith(todos[0]);
   });
