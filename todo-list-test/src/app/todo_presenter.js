@@ -8,11 +8,11 @@ export default class TodoPresenter {
 
   delete(todo, update) {
     this.todos = this.todos.filter((item) => item.id !== todo.id);
-    update(this.todo);
+    update(this.todos);
   }
 
   add(todo, update) {
-    this.todos = [...this.todos, { id: Date.now(), todo }];
+    this.todos = [...this.todos, { id: Date.now(), name: todo }];
     update(this.todos);
   }
 }

@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import Todos from '../components/todos/todos';
 
 function App({ presenter }) {
   const [todos, setTodos] = useState(presenter.getTodos());
@@ -10,8 +11,14 @@ function App({ presenter }) {
   const handleDelete = useCallback((todo) => {
     presenter.delete(todo, setTodos);
   }, []);
+
   console.log(todos);
-  return <div className="App">setting</div>;
+
+  return (
+    <>
+      <Todos todos={todos} onAdd={handleAdd} onDelete={handleDelete} />
+    </>
+  );
 }
 
 export default App;

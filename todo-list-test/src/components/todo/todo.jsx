@@ -7,7 +7,7 @@ const Todo = memo(({ todo, onDelete }) => {
 
   return (
     <li>
-      <span>{todo.todo}</span>
+      <span data-testid="todo">{todo.name}</span>
       <button title="삭제" onClick={handleDelete}>
         <i className="fas fa-trash"></i>
       </button>

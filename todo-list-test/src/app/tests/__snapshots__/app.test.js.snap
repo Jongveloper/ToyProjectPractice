@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Todos component renders 1`] = `
+exports[`App renders 1`] = `
 <div>
   <form
     className="add-from"
@@ -38,6 +38,21 @@ exports[`Todos component renders 1`] = `
         data-testid="todo"
       >
         Learning Nodejs
+      </span>
+      <button
+        onClick={[Function]}
+        title="삭제"
+      >
+        <i
+          className="fas fa-trash"
+        />
+      </button>
+    </li>
+    <li>
+      <span
+        data-testid="todo"
+      >
+        Learning Nextjs
       </span>
       <button
         onClick={[Function]}
