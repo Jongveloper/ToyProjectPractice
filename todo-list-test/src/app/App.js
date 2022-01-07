@@ -12,8 +12,6 @@ function App({ presenter }) {
     presenter.delete(todo, setTodos);
   }, []);
 
-  console.log(todos);
-
   return (
     <>
       <Todos todos={todos} onAdd={handleAdd} onDelete={handleDelete} />
