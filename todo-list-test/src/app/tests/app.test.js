@@ -29,7 +29,7 @@ describe('App', () => {
     const button = screen.getByText('Add');
     userEvent.type(input, newTodo);
     userEvent.click(button);
-    const addedTodo = screen.getAllByTestId('todo');
+    const addedTodo = screen.getAllByTestId('todo')[3];
     expect(addedTodo.innerHTML).toBe(newTodo);
   });
 

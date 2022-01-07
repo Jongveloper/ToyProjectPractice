@@ -20,7 +20,7 @@ describe('TodoPresenter', () => {
   it('투두리스트를 생성합니다.', () => {
     presenter.add('Learn Node', update);
 
-    expect(presenter.getTodos()[2].todo).toBe('Learn Node');
+    expect(presenter.getTodos()[2].name).toBe('Learn Node');
     checkUpdateIsCalled();
   });
 
