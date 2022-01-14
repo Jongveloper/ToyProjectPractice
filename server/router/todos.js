@@ -22,8 +22,10 @@ const validateTodo = [
   validate,
 ];
 
-router.get('/', todoController.getTodos);
-router.post('/create', validateTodo, todoController.createTodo);
-router.delete('/:id', todoController.deleteTodo);
+export default function todosRouter(todoController) {
+  router.get('/', todoController.getTodos);
+  router.post('/create', validateTodo, todoController.createTodo);
+  router.delete('/:id', todoController.deleteTodo);
 
-export default router;
+  return router;
+}

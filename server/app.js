@@ -5,6 +5,8 @@ import 'express-async-errors';
 import todoRouter from './router/todos.js';
 import { sequelize } from './db/database.js';
 import { config } from './config.js';
+import { TodoController } from './controller/todos.js';
+import * as todoRepository from './data/todos.js';
 
 const app = express();
 
@@ -14,24 +16,39 @@ const corsOption = {
   credentials: true,
 };
 
-app.use(express.json());
-app.use(cors(corsOption));
-app.use(morgan('tiny'));
+export async function startServer(port) {
+  console.log(port);
+  app.use(express.json());
+  app.use(cors(corsOption));
+  app.use(morgan('tiny'));
 
-app.use('/todo', todoRouter);
+  app.use('/todo', todoRouter(new TodoController(todoRepository)));
 
-app.use((req, res, next) => {
-  res.sendStatus(404);
-});
-
-app.use((error, req, res, next) => {
-  console.error(error);
-  res.sendStatus(error.status || 500).json({ message: error.message });
-});
-
-sequelize.sync().then(() => {
-  console.log(`Server is started ...... ${new Date()}`);
-  app.listen(config.port, () => {
-    console.log(`${config.port}`);
+  app.use((req, res, next) => {
+    res.sendStatus(404);
   });
-});
+
+  app.use((error, req, res, next) => {
+    console.error(error);
+    res.sendStatus(error.status || 500).json({ message: error.message });
+  });
+
+  await sequelize.sync();
+
+  console.log('Server is started....');
+  const server = app.listen(port);
+  return server;
+}
+
+export async function stopServer(server) {
+  return new Promise((resolve, reject) => {
+    server.close(async () => {
+      try {
+        await sequelize.close();
+        resolve();
+      } catch (error) {
+        reject(error);
+      }
+    });
+  });
+}

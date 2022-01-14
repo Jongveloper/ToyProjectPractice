@@ -29,10 +29,7 @@ export async function getAll() {
 }
 
 export async function create(todo) {
-  return Todo.create({ todo }).then(
-    (data) => this.getById(data.dataValues.id)
-    // console.log(data)
-  );
+  return Todo.create({ todo }).then((data) => this.getById(data.dataValues.id));
 }
 
 export async function remove(id) {
