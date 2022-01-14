@@ -3,7 +3,7 @@
   "name": "todo-list",
   "version": "1.0.0",
   "description": "todo-lisst",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
     "test:unit": "DOTENV_CONFIG_PATH=./.env.test jest --watchAll --verbose --testPathIgnorePatterns=/tests/integration-tests",
@@ -29,6 +29,7 @@
     "axios": "^0.24.0",
     "faker": "^5.5.3",
     "jest": "^27.4.7",
+    "jest-cli": "^27.4.7",
     "mysql2": "^2.3.3",
     "node-mocks-http": "^1.11.0",
     "nodemon": "^2.0.15"
