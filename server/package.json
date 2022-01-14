@@ -5,8 +5,10 @@
   "description": "todo-lisst",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app"
+    "test": "jest --watchAll",
+    "test:unit": "DOTENV_CONFIG_PATH=./.env.test jest --watchAll --verbose --testPathIgnorePatterns=/tests/integration-tests",
+    "test:integration": "DOTENV_CONFIG_PATH=./.env.test jest --watchAll --verbose --testPathPattern=/tests/integration-tests",
+    "start": "nodemon index"
   },
   "author": "Jongveloper",
   "license": "ISC",
@@ -18,11 +20,17 @@
     "express-validator": "^6.14.0",
     "helmet": "^5.0.0",
     "morgan": "^1.10.0",
-    "mysql2": "^2.3.3",
     "sequelize": "^7.0.0-alpha.4",
     "sequelize-cli": "^6.3.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "@types/jest": "^27.4.0",
+    "axios": "^0.24.0",
+    "faker": "^6.6.6",
+    "jest": "^27.4.7",
+    "mysql2": "^2.3.3",
+    "node-mocks-http": "^1.11.0",
     "nodemon": "^2.0.15"
   }
 }
