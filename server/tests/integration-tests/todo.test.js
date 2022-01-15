@@ -36,4 +36,18 @@ describe('Todos APIs', () => {
       expect(res.data.message).toMatch('2글자 이상 입력해주세요!');
     });
   });
+
+  describe('GET /todo', () => {
+    it('투두를 성공적으로 받아오면 200을 반환합니다.', async () => {
+      const contents = faker.random.words(3);
+
+      await request.post('/todo/create', { contents: contents });
+      await request.post('/todo/create', { contents: contents });
+
+      const res = await request.get('/todo');
+
+      expect(res.status).toBe(200);
+      expect(res.data.length).toBeGreaterThanOrEqual(2);
+    });
+  });
 });
