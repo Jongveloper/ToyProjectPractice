@@ -50,4 +50,30 @@ describe('Todos APIs', () => {
       expect(res.data.length).toBeGreaterThanOrEqual(2);
     });
   });
+
+  describe('DELETE /todo/:id', () => {
+    it('아이디가 없으면 404를 반환합니다.', async () => {
+      const res = await request.delete('/todo/noneexistentId');
+
+      expect(res.status).toBe(404);
+      expect(res.data.message).toMatch(
+        '해당 아이디가 없습니다 : noneexistentId'
+      );
+    });
+    it('삭제가 성공하면 204를 반환합니다.', async () => {
+      const contents = faker.random.words(3);
+
+      const createdTodo = await request.post('/todo/create', {
+        contents: contents,
+      });
+
+      const deleteResult = await request.delete(`/todo/${createdTodo.data.id}`);
+
+      const checkTodoResult = await request.delete(
+        `/todo/${createdTodo.data.id}`
+      );
+      expect(deleteResult.status).toBe(204);
+      expect(checkTodoResult.status).toBe(404);
+    });
+  });
 });
