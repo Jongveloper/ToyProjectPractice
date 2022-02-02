@@ -1,5 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { LoginRequestDto } from '../dto/login.request.dto';
 import { ReadOnlyUserDto } from '../dto/user.dto';
 import { UserRequestDto } from '../dto/user.request.dto';
 import { AuthService } from '../services/auth.service';
@@ -21,5 +22,11 @@ export class AuthController {
   @Post('signup')
   async signUp(@Body() body: UserRequestDto) {
     return await this.authService.signUp(body);
+  }
+
+  @ApiOperation({ summary: '로그인' })
+  @Post('login')
+  logIn(@Body() data: LoginRequestDto) {
+    return this.authService.jwtLogIn(data);
   }
 }
