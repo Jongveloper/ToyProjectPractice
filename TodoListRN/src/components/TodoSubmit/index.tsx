@@ -20,11 +20,11 @@ const TodoSubmit = () => {
 
   const canGoNext = newTodo ? true : false
   return (
-    <View style={style.container}>
-      <Text style={style.colorText}>어떤 신나는 일이 기다리고 있을까요!?</Text>
-      <View style={style.wrapper}>
+    <View style={styles.container}>
+      <Text style={styles.colorText}>어떤 신나는 일을 계획하고 계신가요?</Text>
+      <View style={styles.wrapper}>
         <TextInput
-          style={style.textInput}
+          style={styles.textInput}
           value={newTodo}
           onChangeText={onChangeTodo}
           placeholder='오늘의 할일을 입력해보세요!'
@@ -37,11 +37,11 @@ const TodoSubmit = () => {
         />
         <Pressable
           onPress={createTodo}
-          style={style.buttonStyle}>
+          style={styles.buttonStyle}>
           <Text style={
             canGoNext
-              ? StyleSheet.compose(style.buttonText, style.buttonActive)
-              : style.buttonText
+              ? StyleSheet.compose(styles.buttonText, styles.buttonActive)
+              : styles.buttonText
           }>등록</Text>
         </Pressable>
       </View>
@@ -49,7 +49,7 @@ const TodoSubmit = () => {
   )
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     padding: 10
   },

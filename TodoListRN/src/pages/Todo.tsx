@@ -1,19 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
+import TodoBox from "../components/TodoBox";
 import TodoSubmit from "../components/TodoSubmit";
 
 function SignUp() {
   return (
     <SafeAreaView style={styles.container}>
       <TodoSubmit />
+      <TodoBox />
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft: 10,
+    padding: 10,
     flex: 1,
     backgroundColor: 'white'
   },
