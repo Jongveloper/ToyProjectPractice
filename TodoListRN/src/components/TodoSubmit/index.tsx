@@ -17,6 +17,8 @@ const TodoSubmit = () => {
     console.log(newTodo)
     setNewTodo('')
   }, [newTodo])
+
+  const canGoNext = newTodo ? true : false
   return (
     <View style={style.container}>
       <Text style={style.colorText}>어떤 신나는 일이 기다리고 있을까요!?</Text>
@@ -33,8 +35,14 @@ const TodoSubmit = () => {
           onSubmitEditing={createTodo}
           multiline={false}
         />
-        <Pressable onPress={createTodo} style={style.buttonStyle}>
-          <Text style={style.buttonText}>등록</Text>
+        <Pressable
+          onPress={createTodo}
+          style={style.buttonStyle}>
+          <Text style={
+            canGoNext
+              ? StyleSheet.compose(style.buttonText, style.buttonActive)
+              : style.buttonText
+          }>등록</Text>
         </Pressable>
       </View>
     </View>
@@ -70,6 +78,9 @@ const style = StyleSheet.create({
   buttonText: {
     fontWeight: '800',
     fontSize: 20,
+    color: 'gray'
+  },
+  buttonActive: {
     color: '#8b00ff'
   }
 })
