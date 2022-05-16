@@ -16,6 +16,7 @@ function AppInner() {
         options={{
           title: '오늘 할 일',
           headerShadowVisible: false, // 헤더 밑에 라인 없애기
+          headerTitleAlign: 'center'
         }}
       />
     </Stack.Navigator>
