@@ -1,7 +1,10 @@
 import React, { useCallback } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 const TodoBox = () => {
+  const todoList = useSelector((state: any) => state.todo.todo)
+  console.log(todoList)
   const dummy = [
     {
       id: 1,
@@ -23,12 +26,11 @@ const TodoBox = () => {
 
   return (
     <View style={styles.container}>
-      {dummy.map((item, idx) => {
+      {todoList.map((item: any, idx: number) => {
         return (
-          <Text key={idx} style={styles.todo}>{item.contents}</Text>
+          <Text key={idx} style={styles.todo}>{item.todo}</Text>
         )
       })}
-      <Text style={styles.todo}>우와 신나는일!</Text>
     </View>
   )
 }

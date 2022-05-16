@@ -1,12 +1,13 @@
 import React, { useCallback, useState, useRef } from "react";
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-
+import { useAppDispatch } from "../../store";
+import { addTodo } from "../../slices/todo";
 const TodoSubmit = () => {
+  const dispatch = useAppDispatch();
   const [newTodo, setNewTodo] = useState('');
   const todoRef = useRef<TextInput | null>(null);
 
   const onChangeTodo = useCallback((text: string) => {
-    console.log(text)
     setNewTodo(text.trim())
   }, [])
 
@@ -14,7 +15,7 @@ const TodoSubmit = () => {
     if (!newTodo || !newTodo.trim()) {
       return Alert.alert('알림', '아무것도 입력하지 않았어요!');
     }
-    console.log(newTodo)
+    dispatch(addTodo({ todo: newTodo }))
     setNewTodo('')
   }, [newTodo])
 

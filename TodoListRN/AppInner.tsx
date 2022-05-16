@@ -7,7 +7,6 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function AppInner() {
-
   return (
     <Stack.Navigator>
       <Stack.Screen
