@@ -7,16 +7,18 @@ const TodoSubmit = () => {
   const dispatch = useAppDispatch();
   const [newTodo, setNewTodo] = useState('');
   const todoRef = useRef<TextInput | null>(null);
+  const randomId = Math.floor(Math.random() * 100)
 
   const onChangeTodo = useCallback((text: string) => {
-    setNewTodo(text.trim())
+    setNewTodo(text)
   }, [])
 
   const createTodo = useCallback(() => {
     if (!newTodo || !newTodo.trim()) {
       return Alert.alert('알림', '아무것도 입력하지 않았어요!');
     }
-    dispatch(addTodo({ todo: newTodo }))
+    dispatch(addTodo({ todo: newTodo, id: randomId }))
+
     setNewTodo('')
   }, [newTodo])
 

@@ -10,14 +10,22 @@ const delay = (time: number, value: any) =>
 export const addTodo = createAsyncThunk('post/todo', async (data: any) => {
   return await delay(500, {
     todo: data.todo,
+    id: data.id,
   });
 });
 
+export const deleteTodo = createAsyncThunk(
+  'delete/todo',
+  async (id: number) => {
+    return await delay(500, {
+      id,
+    });
+  },
+);
+
 export interface Todo {
-  loading: boolean;
-  todo: {
-    todo: string;
-  };
+  id: number;
+  todo: string;
 }
 
 export interface InitialState {
@@ -40,8 +48,23 @@ export const todo = createSlice({
     [addTodo.fulfilled.type]: (state, action) => {
       state.loading = false;
       state.todo.push(action.payload);
+      console.log(action.payload);
     },
     [addTodo.rejected.type]: (state, action) => {
+      state.loading = false;
+    },
+    [deleteTodo.pending.type]: (state, action) => {
+      state.loading = true;
+    },
+    [deleteTodo.fulfilled.type]: (state, action) => {
+      // console.log(state.todo);
+      const idx = state.todo.findIndex(r => r.id === action.payload.id);
+      // console.log(idx);
+      if (idx !== -1) {
+        state.todo.splice(idx, 1);
+      }
+    },
+    [deleteTodo.rejected.type]: (state, action) => {
       state.loading = false;
     },
   },
