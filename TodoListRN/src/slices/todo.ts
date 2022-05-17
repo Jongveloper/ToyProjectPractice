@@ -48,7 +48,6 @@ export const todo = createSlice({
     [addTodo.fulfilled.type]: (state, action) => {
       state.loading = false;
       state.todo.push(action.payload);
-      console.log(action.payload);
     },
     [addTodo.rejected.type]: (state, action) => {
       state.loading = false;
@@ -57,9 +56,7 @@ export const todo = createSlice({
       state.loading = true;
     },
     [deleteTodo.fulfilled.type]: (state, action) => {
-      // console.log(state.todo);
       const idx = state.todo.findIndex(r => r.id === action.payload.id);
-      // console.log(idx);
       if (idx !== -1) {
         state.todo.splice(idx, 1);
       }

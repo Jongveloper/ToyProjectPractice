@@ -1,14 +1,14 @@
 import React, { useCallback } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../store";
 import Icon from 'react-native-vector-icons/Ionicons'
+import { useTypedSelector } from "../../store/reducer";
 
 import { deleteTodo } from "../../slices/todo";
 
 const TodoBox = () => {
   const dispatch = useAppDispatch();
-  const todoList = useSelector((state: any) => state.todo.todo)
+  const todoList = useTypedSelector((state) => state.todo.todo)
 
   const todoHandler = useCallback((id: number) => {
     dispatch(deleteTodo(id))
