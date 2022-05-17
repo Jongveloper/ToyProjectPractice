@@ -2,6 +2,7 @@ import React, { useCallback, useState, useRef } from "react";
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { useAppDispatch } from "../../store";
 import { addTodo } from "../../slices/todo";
+
 const TodoSubmit = () => {
   const dispatch = useAppDispatch();
   const [newTodo, setNewTodo] = useState('');

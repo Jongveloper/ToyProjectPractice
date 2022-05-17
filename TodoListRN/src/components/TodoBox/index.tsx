@@ -1,34 +1,21 @@
 import React, { useCallback } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const TodoBox = () => {
   const todoList = useSelector((state: any) => state.todo.todo)
-  console.log(todoList)
-  const dummy = [
-    {
-      id: 1,
-      contents: '타입스크립트'
-    },
-    {
-      id: 2,
-      contents: '자바스크립트'
-    },
-    {
-      id: 3,
-      contents: '리액트 네이티브'
-    },
-    {
-      id: 4,
-      contents: '리액트'
-    }
-  ]
 
   return (
     <View style={styles.container}>
       {todoList.map((item: any, idx: number) => {
         return (
-          <Text key={idx} style={styles.todo}>{item.todo}</Text>
+          <View style={styles.flex}>
+            <Text key={idx} style={styles.todo}>{item.todo}</Text>
+            <Pressable>
+              <Icon name='trash-outline' size={20} color='black' />
+            </Pressable>
+          </View>
         )
       })}
     </View>
@@ -42,6 +29,12 @@ const styles = StyleSheet.create({
   todo: {
     fontWeight: '700',
     padding: 5
+  },
+  flex: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: 'space-between',
+    flexDirection: 'row'
   }
 })
 
