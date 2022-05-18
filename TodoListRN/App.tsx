@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-
-import AppInner from './AppInner';
+// Redux
 import { Provider } from "react-redux";
 import store from "./src/store";
+// Routes
+import AppInner from './AppInner';
 
 function App() {
   return (

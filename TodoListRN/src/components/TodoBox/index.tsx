@@ -1,10 +1,11 @@
 import React, { useCallback } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+// Redux
 import { useAppDispatch } from "../../store";
-import Icon from 'react-native-vector-icons/Ionicons'
 import { useTypedSelector } from "../../store/reducer";
-
-import { deleteTodo } from "../../slices/todo";
+import { deleteTodo, Todo } from "../../slices/todo";
+// Icon
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const TodoBox = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +17,7 @@ const TodoBox = () => {
 
   return (
     <View style={styles.container}>
-      {todoList.map((item: any, idx: number) => {
+      {todoList.map((item: Todo, idx: number) => {
         return (
           <View key={idx} style={styles.flex}>
             <Text style={styles.todo}>{item.todo}</Text>

@@ -1,6 +1,8 @@
 import * as React from 'react';
+// Library
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// Component
 import Todo from "./src/pages/Todo";
 
 const Tab = createBottomTabNavigator();

@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 
 const delay = (time: number, value: any) =>
   new Promise((resolve, reject) => {
@@ -7,7 +7,7 @@ const delay = (time: number, value: any) =>
     }, time);
   });
 
-export const addTodo = createAsyncThunk('post/todo', async (data: any) => {
+export const addTodo = createAsyncThunk('post/todo', async (data: Todo) => {
   return await delay(500, {
     todo: data.todo,
     id: data.id,
