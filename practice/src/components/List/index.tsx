@@ -32,10 +32,10 @@ const List: FC<ListType> = ({
             style={style}
             key={id}
             data-position={idx}
-            onDragOver={(e: any) => onDragOver!(e)}
-            onDragEnd={(e: any) => onDragEnd!(e)}
-            onDragStart={(e: any) => onDragStart!(e)}
-            onDrop={(e: any) => onDrop!(e)}
+            onDragOver={(e: React.DragEvent) => onDragOver!(e)}
+            onDragEnd={(e: React.DragEvent) => onDragEnd!(e)}
+            onDragStart={(e: React.DragEvent) => onDragStart!(e)}
+            onDrop={(e: React.DragEvent) => onDrop!(e)}
           >
             <li data-position={idx}>{title}</li>
             <button onClick={() => handleClick(id)}>삭제</button>
