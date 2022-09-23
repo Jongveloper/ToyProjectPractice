@@ -21,6 +21,19 @@ describe('App', () => {
     return render(<App />);
   };
 
+  const renderAppWithTasks = () => {
+    const result = renderApp();
+    const { getByRole, getByText } = result;
+
+    Tasks.forEach(({ title }) => {
+      fireEvent.change(getByRole('textbox'), { target: { value: title } });
+
+      fireEvent.click(getByText('등록'));
+    });
+
+    return result;
+  };
+
   describe('input', () => {
     it('input이 보여집니다.', () => {
       const { getByPlaceholderText } = renderApp();
@@ -50,6 +63,26 @@ describe('App', () => {
       fireEvent.click(getByText('등록'));
 
       expect(input).toHaveDisplayValue('');
+    });
+  });
+
+  describe('list', () => {
+    it('해당 tasks의 title이 보여집니다.', () => {
+      const { container } = renderAppWithTasks();
+
+      Tasks.forEach(({ title }) => {
+        expect(container).toHaveTextContent(title);
+      });
+    });
+
+    describe('삭제 버튼을 클릭하면', () => {
+      it('해당 task가 삭제됩니다.', () => {
+        const { container, getAllByText } = renderAppWithTasks();
+
+        fireEvent.click(getAllByText('삭제')[0]);
+
+        expect(container).not.toHaveTextContent(Tasks[0].title);
+      });
     });
   });
 });
