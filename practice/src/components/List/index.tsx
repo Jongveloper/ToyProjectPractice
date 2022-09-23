@@ -8,7 +8,7 @@ interface ListType {
   onDragOver?: (e: React.DragEvent) => void;
   onDragEnd?: (e: React.DragEvent<Element>) => void;
   onDragStart?: (e: React.DragEvent<Element>) => void;
-  onDrop?: (e: any) => void;
+  onDrop?: (e: React.DragEvent) => void;
 }
 
 const List: FC<ListType> = ({
